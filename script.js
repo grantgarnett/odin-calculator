@@ -20,7 +20,7 @@ function divide (num1, num2) {
     } else return "ERROR";
 }
 
-operate(operator, num1, num2) {
+function operate(operator, num1, num2) {
     if (operator === "+") {
         add(num1, num2);
     } else if (operator === "-") {
