@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
 }
 
@@ -19,6 +20,11 @@ html, body {
     align-items: center;
 }
 
+#title {
+    font-size: 50px;
+    color: rgb(10, 85, 197)
+}
+
 #middle {
     width: 100%;
     height: 65%;
@@ -36,7 +42,10 @@ html, body {
 }
 
 button {
-    width: 5%;
+    width: 10%;
+    font-size: 32px;
+    border-radius: 10px;
+    background-color: rgb(227, 231, 238);
 }
 
 #calc-top {
@@ -49,9 +58,11 @@ button {
 #reset-button {
     width: 15%;
     height: 100%;
+    font-size: 16px;
+    background-color: rgb(195, 199, 206)
 }
 
-#calc-buttons {
+#calc-button-rows {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -61,4 +72,16 @@ button {
 #row-one, #row-two, #row-three {
     display: flex;
     justify-content: space-around;
+}
+
+img {
+    width: 25px;
+    height: 25px;
+}
+
+#footer {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
