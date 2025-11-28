@@ -32,7 +32,21 @@ function operate(operator, num1, num2) {
     }
 }
 
+function backspace() {
+    display.textContent = display.textContent.slice(0, -1);
+}
+
+function cancelOverflow() {
+  if (display.offsetWidth > originalDisplayWidth) {
+    backspace();
+  }
+}
+
 const display = document.querySelector("#display");
+originalDisplayWidth = display.offsetWidth;
+window.addEventListener("resize", () => {
+    originalDisplayWidth = display.offsetWidth;
+});
 
 const oneButton = document.querySelector("#one-button");
 const twoButton = document.querySelector("#two-button");
@@ -45,13 +59,49 @@ const eightButton = document.querySelector("#eight-button");
 const nineButton = document.querySelector("#nine-button");
 const zeroButton = document.querySelector("#zero-button");
 
-oneButton.addEventListener("click", () => display.textContent += "1");
-twoButton.addEventListener("click", () => display.textContent += "2");
-threeButton.addEventListener("click", () => display.textContent += "3");
-fourButton.addEventListener("click", () => display.textContent += "4");
-fiveButton.addEventListener("click", () => display.textContent += "5");
-sixButton.addEventListener("click", () => display.textContent += "6");
-sevenButton.addEventListener("click", () => display.textContent += "7");
-eightButton.addEventListener("click", () => display.textContent += "8");
-nineButton.addEventListener("click", () => display.textContent += "9");
-zeroButton.addEventListener("click", () => display.textContent += "0");
+oneButton.addEventListener("click", (event) => {
+    display.textContent += "1";
+    cancelOverflow();
+});
+twoButton.addEventListener("click", () => {
+    display.textContent += "2";
+    cancelOverflow();
+});
+threeButton.addEventListener("click", () => {
+    display.textContent += "3";
+    cancelOverflow();
+});
+fourButton.addEventListener("click", () => {
+    display.textContent += "4";
+    cancelOverflow();
+});
+fiveButton.addEventListener("click", () => {
+    display.textContent += "5";
+    cancelOverflow();
+});
+sixButton.addEventListener("click", () => {
+    display.textContent += "6";
+    cancelOverflow();
+});
+sevenButton.addEventListener("click", () => {
+    display.textContent += "7";
+    cancelOverflow();
+});
+eightButton.addEventListener("click", () => {
+    display.textContent += "8";
+    cancelOverflow();
+});
+nineButton.addEventListener("click", () => {
+    display.textContent += "9";
+    cancelOverflow();
+});
+zeroButton.addEventListener("click", () => {
+    display.textContent += "0";
+    cancelOverflow();
+});
+
+const backspaceButton = document.querySelector("#backspace-button");
+
+backspaceButton.addEventListener("click", () => {
+    backspace();
+});
