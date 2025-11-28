@@ -50,6 +50,7 @@ button {
 
 #calc-top {
     height: 15%;
+    gap: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,4 +85,16 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#display {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(195, 199, 206);
+    border-radius: 10px;
+    border: 1px solid rgb(53, 55, 59);
+    padding: 0 10px 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
