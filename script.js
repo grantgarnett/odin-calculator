@@ -49,6 +49,22 @@ function updateDisplay(input) {
     cancelOverflow();
 }
 
+function processOpButton(operation) {
+    if (display.textContent !== "") {
+        if (initialValue !== "" && currentValue !== "" && operator !== "") {
+            display.textContent = operate(operator, +initialValue, +currentValue);
+            while (display.offsetWidth > originalDisplayWidth) {
+                display.textContent = display.textContent.slice(0,-1);
+            }
+        }
+
+        initialValue = display.textContent;
+        currentValue = "";
+        operator = operation;
+        operationDisplay.style.opacity = 1;
+    }
+}
+
 const display = document.querySelector("#display");
 originalDisplayWidth = display.offsetWidth;
 window.addEventListener("resize", () => {
@@ -99,7 +115,7 @@ window.addEventListener("keydown", (event) => {
     } else if (event.key === "+") {
         addButton.dispatchEvent(clickEvent);
     } else if (event.key === "-") {
-        subtractButtonButton.dispatchEvent(clickEvent);
+        subtractButton.dispatchEvent(clickEvent);
     } else if (event.key === "*") {
         multiplyButton.dispatchEvent(clickEvent);
     } else if (event.key === "/") {
@@ -170,69 +186,21 @@ resetButton.addEventListener("click", () => {
 })
 
 addButton.addEventListener("click", () => {
-    if (display.textContent !== "") {
-        if (initialValue !== "" && currentValue !== "" && operator !== "") {
-            display.textContent = operate(operator, +initialValue, +currentValue);
-            while (display.offsetWidth > originalDisplayWidth) {
-                display.textContent = display.textContent.slice(0,-1);
-            }
-        }
-
-        initialValue = display.textContent;
-        currentValue = "";
-        operator = "+";
-        operationDisplay.style.opacity = 1;
-        operationDisplay.src = "./images/add.png";
-}});    
-
+    processOpButton("+");
+    operationDisplay.src = "./images/add.png";
+});    
 subtractButton.addEventListener("click", () => {
-    if (display.textContent !== "") {
-        if (initialValue !== "" && currentValue !== "" && operator !== "") {
-            display.textContent = operate(operator, +initialValue, +currentValue);
-            while (display.offsetWidth > originalDisplayWidth) {
-                display.textContent = display.textContent.slice(0,-1);
-            }
-
-        }
-
-        initialValue = display.textContent;
-        currentValue = "";
-        operator = "-";
-        operationDisplay.style.opacity = 1;
-        operationDisplay.src = "./images/subtract.png";
-}});
-
+    processOpButton("-");
+    operationDisplay.src = "./images/subtract.png";
+});
 multiplyButton.addEventListener("click", () => {
-    if (display.textContent !== "") {
-        if (initialValue !== "" && currentValue !== "" && operator !== "") {
-            display.textContent = operate(operator, +initialValue, +currentValue);
-            while (display.offsetWidth > originalDisplayWidth) {
-                display.textContent = display.textContent.slice(0,-1);
-            }
-        }
-
-        initialValue = display.textContent;
-        currentValue = "";
-        operator = "*";
-        operationDisplay.style.opacity = 1;
-        operationDisplay.src = "./images/multiply.png";
-}});
-
+    processOpButton("*");
+    operationDisplay.src = "./images/multiply.png";
+});
 divideButton.addEventListener("click", () => {
-    if (display.textContent !== "") {
-        if (initialValue !== "" && currentValue !== "" && operator !== "") {
-            display.textContent = operate(operator, +initialValue, +currentValue);
-            while (display.offsetWidth > originalDisplayWidth) {
-                display.textContent = display.textContent.slice(0,-1);
-            }
-        }
-
-        initialValue = display.textContent;
-        currentValue = "";
-        operator = "/";
-        operationDisplay.style.opacity = 1;
-        operationDisplay.src = "./images/divide.png";
-}});
+    processOpButton("/");
+    operationDisplay.src = "./images/divide.png";
+});
 
 equalButton.addEventListener("click", () => {
     if (initialValue !== "" && currentValue !== "" && operator !== "") {
