@@ -55,6 +55,12 @@ window.addEventListener("visibilitychange", () => {
 const operationDisplay = document.querySelector("#operation-display");
 operationDisplay.style.opacity = 0;
 
+const buttonDisplay = document.querySelectorAll("button");
+buttonDisplay.forEach(button => {
+    button.addEventListener("mousedown", () => button.style.backgroundColor = "rgb(195, 199, 206)");
+    button.addEventListener("mouseup", () => button.style.backgroundColor = "rgb(227, 231, 238)");
+});
+
 const oneButton = document.querySelector("#one-button");
 const twoButton = document.querySelector("#two-button");
 const threeButton = document.querySelector("#three-button");
@@ -81,7 +87,6 @@ oneButton.addEventListener("click", (event) => {
     currentValue += "1";
     display.textContent = currentValue;
     cancelOverflow();
-    console.log(`${initialValue}, ${currentValue}, ${operator}, ${display.textContent}`);
 });
 twoButton.addEventListener("click", () => {
     currentValue += "2";

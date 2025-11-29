@@ -44,6 +44,7 @@ html, body {
 button {
     width: 10%;
     font-size: 32px;
+    border: 1px solid rgb(53, 55, 59);
     border-radius: 10px;
     background-color: rgb(227, 231, 238);
 }
@@ -84,7 +85,6 @@ button {
     width: 15%;
     height: 100%;
     font-size: 16px;
-    background-color: rgb(195, 199, 206)
 }
 
 #calc-button-rows {
