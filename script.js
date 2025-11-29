@@ -173,6 +173,7 @@ negativeButton.addEventListener("click", () => {
         display.textContent = currentValue;
     }
     else if (currentValue.length !== 0){
+        // insert negative symbol before number
         let textArray = currentValue.split("");
         textArray.unshift("-");
         currentValue = textArray.join("");
