@@ -43,6 +43,12 @@ function cancelOverflow() {
   }
 }
 
+function updateDisplay(input) {
+    currentValue += input;
+    display.textContent = currentValue;
+    cancelOverflow();
+}
+
 const display = document.querySelector("#display");
 originalDisplayWidth = display.offsetWidth;
 window.addEventListener("resize", () => {
@@ -87,9 +93,7 @@ window.addEventListener("keydown", (event) => {
     let numbers = "0123456789";
     let clickEvent = new Event("click");
     if (numbers.includes(event.key)) {
-        currentValue += event.key;
-        display.textContent = currentValue;
-        cancelOverflow();
+        updateDisplay(event.key);
     } else if (event.key === "Enter") {
         equalButton.dispatchEvent(clickEvent);
     } else if (event.key === "+") {
@@ -104,62 +108,41 @@ window.addEventListener("keydown", (event) => {
 })
 
 oneButton.addEventListener("click", (event) => {
-    currentValue += "1";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("1");
 });
 twoButton.addEventListener("click", () => {
-    currentValue += "2";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("2");
 });
 threeButton.addEventListener("click", () => {
-    currentValue += "3";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("3");
 });
 fourButton.addEventListener("click", () => {
-    currentValue += "4";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("4");
 });
 fiveButton.addEventListener("click", () => {
-    currentValue += "5";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("5");
 });
 sixButton.addEventListener("click", () => {
-    currentValue += "6";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("6");
 });
 sevenButton.addEventListener("click", () => {
-    currentValue += "7";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("7");
 });
 eightButton.addEventListener("click", () => {
-    currentValue += "8";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("8");
 });
 nineButton.addEventListener("click", () => {
-    currentValue += "9";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("9");
 });
 zeroButton.addEventListener("click", () => {
-    currentValue += "0";
-    display.textContent = currentValue;
-    cancelOverflow();
+    updateDisplay("0");
 });
 
 backspaceButton.addEventListener("click", backspace);
 
 decimalButton.addEventListener("click", () => {
     if (!currentValue.includes(".")) {
-        currentValue += ".";
-        display.textContent = currentValue;
+        updateDisplay(".");
     }
 })
 
@@ -173,6 +156,7 @@ negativeButton.addEventListener("click", () => {
         textArray.unshift("-");
         currentValue = textArray.join("");
         display.textContent = currentValue;
+        cancelOverflow();
     }
 });
 
