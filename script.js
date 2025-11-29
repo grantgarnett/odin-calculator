@@ -38,7 +38,7 @@ function backspace() {
 }
 
 function cancelOverflow() {
-  if (display.offsetWidth > originalDisplayWidth) {
+  while (display.offsetWidth > originalDisplayWidth) {
     backspace();
   }
 }
@@ -46,6 +46,9 @@ function cancelOverflow() {
 const display = document.querySelector("#display");
 originalDisplayWidth = display.offsetWidth;
 window.addEventListener("resize", () => {
+    originalDisplayWidth = display.offsetWidth;
+});
+window.addEventListener("visibilitychange", () => {
     originalDisplayWidth = display.offsetWidth;
 });
 
@@ -162,6 +165,9 @@ addButton.addEventListener("click", () => {
     if (display.textContent !== "") {
         if (initialValue !== "" && currentValue !== "" && operator !== "") {
             display.textContent = operate(operator, +initialValue, +currentValue);
+            while (display.offsetWidth > originalDisplayWidth) {
+                display.textContent = display.textContent.slice(0,-1);
+            }
         }
 
         initialValue = display.textContent;
@@ -175,6 +181,10 @@ subtractButton.addEventListener("click", () => {
     if (display.textContent !== "") {
         if (initialValue !== "" && currentValue !== "" && operator !== "") {
             display.textContent = operate(operator, +initialValue, +currentValue);
+            while (display.offsetWidth > originalDisplayWidth) {
+                display.textContent = display.textContent.slice(0,-1);
+            }
+
         }
 
         initialValue = display.textContent;
@@ -188,6 +198,9 @@ multiplyButton.addEventListener("click", () => {
     if (display.textContent !== "") {
         if (initialValue !== "" && currentValue !== "" && operator !== "") {
             display.textContent = operate(operator, +initialValue, +currentValue);
+            while (display.offsetWidth > originalDisplayWidth) {
+                display.textContent = display.textContent.slice(0,-1);
+            }
         }
 
         initialValue = display.textContent;
@@ -201,6 +214,9 @@ divideButton.addEventListener("click", () => {
     if (display.textContent !== "") {
         if (initialValue !== "" && currentValue !== "" && operator !== "") {
             display.textContent = operate(operator, +initialValue, +currentValue);
+            while (display.offsetWidth > originalDisplayWidth) {
+                display.textContent = display.textContent.slice(0,-1);
+            }
         }
 
         initialValue = display.textContent;
@@ -213,6 +229,9 @@ divideButton.addEventListener("click", () => {
 equalButton.addEventListener("click", () => {
     if (initialValue !== "" && currentValue !== "" && operator !== "") {
             display.textContent = operate(operator, +initialValue, +currentValue);
+            while (display.offsetWidth > originalDisplayWidth) {
+                display.textContent = display.textContent.slice(0,-1);
+            }
     }
     
     initialValue = "";
