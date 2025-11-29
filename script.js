@@ -123,6 +123,8 @@ window.addEventListener("keydown", (event) => {
         multiplyButton.dispatchEvent(clickEvent);
     } else if (event.key === "/") {
         divideButton.dispatchEvent(clickEvent);
+    } else if (event.key === "Backspace") {
+        backspace();
     }
 })
 
