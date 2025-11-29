@@ -64,6 +64,7 @@ oneButton.addEventListener("click", (event) => {
     currentValue += "1";
     display.textContent = currentValue;
     cancelOverflow();
+    console.log(`${initialValue}, ${currentValue}, ${operator}, ${display.textContent}`);
 });
 twoButton.addEventListener("click", () => {
     currentValue += "2";
@@ -146,81 +147,55 @@ const divideButton = document.querySelector("#divide-button");
 const equalButton = document.querySelector("#equal-button");
 
 addButton.addEventListener("click", () => {
-    if (currentValue !== "") {
-        if (initialValue === "")  {
-            initialValue = currentValue;
-            currentValue = "";
-            operator = "+";
+    if (display.textContent !== "") {
+        if (initialValue !== "" && currentValue !== "" && operator !== "") {
+            display.textContent = operate(operator, +initialValue, +currentValue);
         }
-        else if (operator !== "") {
-            initialValue = 
-                operate(operator, +initialValue, +currentValue);
-            display.textContent = initialValue;
-            currentValue = "";
-            operator = "+";
-        }
-    }
-    else if (display.textContent !== "") {
+
+        initialValue = display.textContent;
+        currentValue = "";
         operator = "+";
-    }
-});
+}});
 
 subtractButton.addEventListener("click", () => {
-    if (currentValue !== "") {
-        if (initialValue === "")  {
-            initialValue = currentValue;
-            currentValue = "";
-            operator = "-";
+    if (display.textContent !== "") {
+        if (initialValue !== "" && currentValue !== "" && operator !== "") {
+            display.textContent = operate(operator, +initialValue, +currentValue);
         }
-        else if (operator !== "") {
-            initialValue = 
-                operate(operator, +initialValue, +currentValue);
-            display.textContent = initialValue;
-            currentValue = "";
-            operator = "-";
-        }
-    }
-    else if (display.textContent !== "") {
+
+        initialValue = display.textContent;
+        currentValue = "";
         operator = "-";
-    }
-});
+}});
 
 multiplyButton.addEventListener("click", () => {
-    if (currentValue !== "") {
-        if (initialValue === "")  {
-            initialValue = currentValue;
-            currentValue = "";
-            operator = "x";
+    if (display.textContent !== "") {
+        if (initialValue !== "" && currentValue !== "" && operator !== "") {
+            display.textContent = operate(operator, +initialValue, +currentValue);
         }
-        else if (operator !== "") {
-            initialValue = 
-                operate(operator, +initialValue, +currentValue);
-            display.textContent = initialValue;
-            currentValue = "";
-            operator = "x";
-        }
-    }
-    else if (display.textContent !== "") {
+
+        initialValue = display.textContent;
+        currentValue = "";
         operator = "x";
-    }
-});
+}});
 
 divideButton.addEventListener("click", () => {
-    if (currentValue !== "") {
-        if (initialValue === "")  {
-            initialValue = currentValue;
-            currentValue = "";
-            operator = "div";
+    if (display.textContent !== "") {
+        if (initialValue !== "" && currentValue !== "" && operator !== "") {
+            display.textContent = operate(operator, +initialValue, +currentValue);
         }
-        else if (operator !== "") {
-            initialValue = 
-                operate(operator, +initialValue, +currentValue);
-            display.textContent = initialValue;
-            currentValue = "";
-            operator = "div";
-        }
-    }
-    else if (display.textContent !== "") {
+
+        initialValue = display.textContent;
+        currentValue = "";
         operator = "div";
+}});
+
+equalButton.addEventListener("click", () => {
+    if (initialValue !== "" && currentValue !== "" && operator !== "") {
+            display.textContent = operate(operator, +initialValue, +currentValue);
     }
+    
+    initialValue = "";
+    currentValue = "";
+    operator = "-";
 });
