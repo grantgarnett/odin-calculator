@@ -66,6 +66,17 @@ const eightButton = document.querySelector("#eight-button");
 const nineButton = document.querySelector("#nine-button");
 const zeroButton = document.querySelector("#zero-button");
 
+const backspaceButton = document.querySelector("#backspace-button");
+const decimalButton = document.querySelector("#decimal-button");
+const negativeButton = document.querySelector("#negative-button");
+const resetButton = document.querySelector("#reset-button");
+
+const addButton = document.querySelector("#add-button");
+const subtractButton = document.querySelector("#subtract-button");
+const multiplyButton = document.querySelector("#multiply-button");
+const divideButton = document.querySelector("#divide-button");
+const equalButton = document.querySelector("#equal-button");
+
 oneButton.addEventListener("click", (event) => {
     currentValue += "1";
     display.textContent = currentValue;
@@ -118,11 +129,7 @@ zeroButton.addEventListener("click", () => {
     cancelOverflow();
 });
 
-const backspaceButton = document.querySelector("#backspace-button");
-
 backspaceButton.addEventListener("click", backspace);
-
-const decimalButton = document.querySelector("#decimal-button");
 
 decimalButton.addEventListener("click", () => {
     if (!currentValue.includes(".")) {
@@ -130,8 +137,6 @@ decimalButton.addEventListener("click", () => {
         display.textContent = currentValue;
     }
 })
-
-const negativeButton = document.querySelector("#negative-button");
 
 negativeButton.addEventListener("click", () => {
     if (currentValue.startsWith("-")) {
@@ -146,20 +151,14 @@ negativeButton.addEventListener("click", () => {
     }
 });
 
-const resetButton = document.querySelector("#reset-button");
-
 resetButton.addEventListener("click", () => {
     initialValue = "";
     currentValue = "";
     operator = "";
     display.textContent = "";
+    operationDisplay.style.opacity = 0;
+    operationDisplay.src = "";
 })
-
-const addButton = document.querySelector("#add-button");
-const subtractButton = document.querySelector("#subtract-button");
-const multiplyButton = document.querySelector("#multiply-button");
-const divideButton = document.querySelector("#divide-button");
-const equalButton = document.querySelector("#equal-button");
 
 addButton.addEventListener("click", () => {
     if (display.textContent !== "") {
