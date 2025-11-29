@@ -25,9 +25,9 @@ function operate (operator, num1, num2) {
             return add(num1, num2);
         } else if (operator === "-") {
             return subtract(num1, num2);
-        } else if (operator === "x") {
+        } else if (operator === "*") {
             return multiply(num1, num2);
-        } else if (operator === "div") {
+        } else if (operator === "/") {
             return divide(num1, num2);
         }
 }
@@ -213,7 +213,7 @@ multiplyButton.addEventListener("click", () => {
 
         initialValue = display.textContent;
         currentValue = "";
-        operator = "x";
+        operator = "*";
         operationDisplay.style.opacity = 1;
         operationDisplay.src = "./images/multiply.png";
 }});
@@ -229,7 +229,7 @@ divideButton.addEventListener("click", () => {
 
         initialValue = display.textContent;
         currentValue = "";
-        operator = "div";
+        operator = "/";
         operationDisplay.style.opacity = 1;
         operationDisplay.src = "./images/divide.png";
 }});
