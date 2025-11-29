@@ -83,6 +83,26 @@ const multiplyButton = document.querySelector("#multiply-button");
 const divideButton = document.querySelector("#divide-button");
 const equalButton = document.querySelector("#equal-button");
 
+window.addEventListener("keydown", (event) => {
+    let numbers = "0123456789";
+    let clickEvent = new Event("click");
+    if (numbers.includes(event.key)) {
+        currentValue += event.key;
+        display.textContent = currentValue;
+        cancelOverflow();
+    } else if (event.key === "Enter") {
+        equalButton.dispatchEvent(clickEvent);
+    } else if (event.key === "+") {
+        addButton.dispatchEvent(clickEvent);
+    } else if (event.key === "-") {
+        subtractButtonButton.dispatchEvent(clickEvent);
+    } else if (event.key === "*") {
+        multiplyButton.dispatchEvent(clickEvent);
+    } else if (event.key === "/") {
+        divideButton.dispatchEvent(clickEvent);
+    }
+})
+
 oneButton.addEventListener("click", (event) => {
     currentValue += "1";
     display.textContent = currentValue;
