@@ -1,5 +1,5 @@
-let input1 = "";
-let input2 = "";
+let initialValue = "";
+let currentValue = "";
 let operator = "";
 
 function add (num1, num2) {
@@ -20,20 +20,21 @@ function divide (num1, num2) {
     } else return "ERROR";
 }
 
-function operate(operator, num1, num2) {
-    if (operator === "+") {
-        add(num1, num2);
-    } else if (operator === "-") {
-        subtract(num1, num2);
-    } else if (operator === "x") {
-        multiply(num1, num2);
-    } else if (operator === "div") {
-        divide(num1, num2);
-    }
+function operate (operator, num1, num2) {
+        if (operator === "+") {
+            return add(num1, num2);
+        } else if (operator === "-") {
+            return subtract(num1, num2);
+        } else if (operator === "x") {
+            return multiply(num1, num2);
+        } else if (operator === "div") {
+            return divide(num1, num2);
+        }
 }
 
 function backspace() {
-    display.textContent = display.textContent.slice(0, -1);
+    currentValue = currentValue.slice(0, -1);
+    display.textContent = currentValue;
 }
 
 function cancelOverflow() {
@@ -60,69 +61,166 @@ const nineButton = document.querySelector("#nine-button");
 const zeroButton = document.querySelector("#zero-button");
 
 oneButton.addEventListener("click", (event) => {
-    display.textContent += "1";
+    currentValue += "1";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 twoButton.addEventListener("click", () => {
-    display.textContent += "2";
+    currentValue += "2";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 threeButton.addEventListener("click", () => {
-    display.textContent += "3";
+    currentValue += "3";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 fourButton.addEventListener("click", () => {
-    display.textContent += "4";
+    currentValue += "4";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 fiveButton.addEventListener("click", () => {
-    display.textContent += "5";
+    currentValue += "5";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 sixButton.addEventListener("click", () => {
-    display.textContent += "6";
+    currentValue += "6";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 sevenButton.addEventListener("click", () => {
-    display.textContent += "7";
+    currentValue += "7";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 eightButton.addEventListener("click", () => {
-    display.textContent += "8";
+    currentValue += "8";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 nineButton.addEventListener("click", () => {
-    display.textContent += "9";
+    currentValue += "9";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 zeroButton.addEventListener("click", () => {
-    display.textContent += "0";
+    currentValue += "0";
+    display.textContent = currentValue;
     cancelOverflow();
 });
 
 const backspaceButton = document.querySelector("#backspace-button");
 
-backspaceButton.addEventListener("click", () => {
-    backspace();
-});
+backspaceButton.addEventListener("click", backspace);
 
 const decimalButton = document.querySelector("#decimal-button");
 
 decimalButton.addEventListener("click", () => {
-    if(!display.textContent.includes(".")) {
-        display.textContent += ".";
+    if (!currentValue.includes(".")) {
+        currentValue += ".";
+        display.textContent = currentValue;
     }
 })
 
 const negativeButton = document.querySelector("#negative-button");
 
 negativeButton.addEventListener("click", () => {
-    if(display.textContent.startsWith("-")) {
-        display.textContent = display.textContent.slice(1);
+    if (currentValue.startsWith("-")) {
+        currentValue = currentValue.slice(1);
+        display.textContent = currentValue;
     }
-    else {
-        let textArray = display.textContent.split("");
+    else if (currentValue.length !== 0){
+        let textArray = currentValue.split("");
         textArray.unshift("-");
-        display.textContent = textArray.join("");
+        currentValue = textArray.join("");
+        display.textContent = currentValue;
+    }
+});
+
+const addButton = document.querySelector("#add-button");
+const subtractButton = document.querySelector("#subtract-button");
+const multiplyButton = document.querySelector("#multiply-button");
+const divideButton = document.querySelector("#divide-button");
+const equalButton = document.querySelector("#equal-button");
+
+addButton.addEventListener("click", () => {
+    if (currentValue !== "") {
+        if (initialValue === "")  {
+            initialValue = currentValue;
+            currentValue = "";
+            operator = "+";
+        }
+        else if (operator !== "") {
+            initialValue = 
+                operate(operator, +initialValue, +currentValue);
+            display.textContent = initialValue;
+            currentValue = "";
+            operator = "+";
+        }
+    }
+    else if (display.textContent !== "") {
+        operator = "+";
+    }
+});
+
+subtractButton.addEventListener("click", () => {
+    if (currentValue !== "") {
+        if (initialValue === "")  {
+            initialValue = currentValue;
+            currentValue = "";
+            operator = "-";
+        }
+        else if (operator !== "") {
+            initialValue = 
+                operate(operator, +initialValue, +currentValue);
+            display.textContent = initialValue;
+            currentValue = "";
+            operator = "-";
+        }
+    }
+    else if (display.textContent !== "") {
+        operator = "-";
+    }
+});
+
+multiplyButton.addEventListener("click", () => {
+    if (currentValue !== "") {
+        if (initialValue === "")  {
+            initialValue = currentValue;
+            currentValue = "";
+            operator = "x";
+        }
+        else if (operator !== "") {
+            initialValue = 
+                operate(operator, +initialValue, +currentValue);
+            display.textContent = initialValue;
+            currentValue = "";
+            operator = "x";
+        }
+    }
+    else if (display.textContent !== "") {
+        operator = "x";
+    }
+});
+
+divideButton.addEventListener("click", () => {
+    if (currentValue !== "") {
+        if (initialValue === "")  {
+            initialValue = currentValue;
+            currentValue = "";
+            operator = "div";
+        }
+        else if (operator !== "") {
+            initialValue = 
+                operate(operator, +initialValue, +currentValue);
+            display.textContent = initialValue;
+            currentValue = "";
+            operator = "div";
+        }
+    }
+    else if (display.textContent !== "") {
+        operator = "div";
     }
 });
