@@ -49,6 +49,9 @@ window.addEventListener("resize", () => {
     originalDisplayWidth = display.offsetWidth;
 });
 
+const operationDisplay = document.querySelector("#operation-display");
+operationDisplay.style.opacity = 0;
+
 const oneButton = document.querySelector("#one-button");
 const twoButton = document.querySelector("#two-button");
 const threeButton = document.querySelector("#three-button");
@@ -164,7 +167,9 @@ addButton.addEventListener("click", () => {
         initialValue = display.textContent;
         currentValue = "";
         operator = "+";
-}});
+        operationDisplay.style.opacity = 1;
+        operationDisplay.src = "./images/add.png";
+}});    
 
 subtractButton.addEventListener("click", () => {
     if (display.textContent !== "") {
@@ -175,6 +180,8 @@ subtractButton.addEventListener("click", () => {
         initialValue = display.textContent;
         currentValue = "";
         operator = "-";
+        operationDisplay.style.opacity = 1;
+        operationDisplay.src = "./images/subtract.png";
 }});
 
 multiplyButton.addEventListener("click", () => {
@@ -186,6 +193,8 @@ multiplyButton.addEventListener("click", () => {
         initialValue = display.textContent;
         currentValue = "";
         operator = "x";
+        operationDisplay.style.opacity = 1;
+        operationDisplay.src = "./images/multiply.png";
 }});
 
 divideButton.addEventListener("click", () => {
@@ -197,6 +206,8 @@ divideButton.addEventListener("click", () => {
         initialValue = display.textContent;
         currentValue = "";
         operator = "div";
+        operationDisplay.style.opacity = 1;
+        operationDisplay.src = "./images/divide.png";
 }});
 
 equalButton.addEventListener("click", () => {
@@ -206,5 +217,7 @@ equalButton.addEventListener("click", () => {
     
     initialValue = "";
     currentValue = "";
-    operator = "-";
+    operator = "";
+    operationDisplay.style.opacity = 0;
+    operationDisplay.src = "";
 });
