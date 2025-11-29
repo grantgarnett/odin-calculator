@@ -105,3 +105,24 @@ const backspaceButton = document.querySelector("#backspace-button");
 backspaceButton.addEventListener("click", () => {
     backspace();
 });
+
+const decimalButton = document.querySelector("#decimal-button");
+
+decimalButton.addEventListener("click", () => {
+    if(!display.textContent.includes(".")) {
+        display.textContent += ".";
+    }
+})
+
+const negativeButton = document.querySelector("#negative-button");
+
+negativeButton.addEventListener("click", () => {
+    if(display.textContent.startsWith("-")) {
+        display.textContent = display.textContent.slice(1);
+    }
+    else {
+        let textArray = display.textContent.split("");
+        textArray.unshift("-");
+        display.textContent = textArray.join("");
+    }
+});
