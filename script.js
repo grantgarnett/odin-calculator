@@ -49,15 +49,18 @@ function updateDisplay(input) {
     cancelOverflow();
 }
 
+function calculate() {
+    if (initialValue !== "" && currentValue !== "" && operator !== "") {
+        display.textContent = operate(operator, +initialValue, +currentValue);
+        while (display.offsetWidth > originalDisplayWidth) {
+            display.textContent = display.textContent.slice(0,-1);
+        }
+    }
+}
+
 function processOpButton(operation) {
     if (display.textContent !== "") {
-        if (initialValue !== "" && currentValue !== "" && operator !== "") {
-            display.textContent = operate(operator, +initialValue, +currentValue);
-            while (display.offsetWidth > originalDisplayWidth) {
-                display.textContent = display.textContent.slice(0,-1);
-            }
-        }
-
+        calculate();
         initialValue = display.textContent;
         currentValue = "";
         operator = operation;
@@ -203,13 +206,7 @@ divideButton.addEventListener("click", () => {
 });
 
 equalButton.addEventListener("click", () => {
-    if (initialValue !== "" && currentValue !== "" && operator !== "") {
-            display.textContent = operate(operator, +initialValue, +currentValue);
-            while (display.offsetWidth > originalDisplayWidth) {
-                display.textContent = display.textContent.slice(0,-1);
-            }
-    }
-    
+    calculate();
     initialValue = "";
     currentValue = "";
     operator = "";
