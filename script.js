@@ -140,6 +140,15 @@ negativeButton.addEventListener("click", () => {
     }
 });
 
+const resetButton = document.querySelector("#reset-button");
+
+resetButton.addEventListener("click", () => {
+    initialValue = "";
+    currentValue = "";
+    operator = "";
+    display.textContent = "";
+})
+
 const addButton = document.querySelector("#add-button");
 const subtractButton = document.querySelector("#subtract-button");
 const multiplyButton = document.querySelector("#multiply-button");
